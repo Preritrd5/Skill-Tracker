@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5000/api";
+const VITE_API_BASE = "http://localhost:5000/api";
 
 const getToken = () => localStorage.getItem("token");
 
@@ -12,7 +12,7 @@ async function request(path, options = {}) {
 
     console.log("API request", options.method || "GET", path, "Authorization:", !!headers.Authorization);
 
-    const res = await fetch(`${API_BASE}${path}`, {
+    const res = await fetch(`${VITE_API_BASE}${path}`, {
         ...options,
         headers,
     });
