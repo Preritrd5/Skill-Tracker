@@ -1,4 +1,8 @@
-const VITE_API_BASE = "http://localhost:5000/api";
+// Frontend_App/src/api.js
+// Use Vite env var VITE_API_BASE (exposed at build time).
+// Falls back to localhost for local development.
+
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000/api";
 
 const getToken = () => localStorage.getItem("token");
 
@@ -12,7 +16,7 @@ async function request(path, options = {}) {
 
     console.log("API request", options.method || "GET", path, "Authorization:", !!headers.Authorization);
 
-    const res = await fetch(`${VITE_API_BASE}${path}`, {
+    const res = await fetch(`${API_BASE}${path}`, {
         ...options,
         headers,
     });
@@ -34,7 +38,7 @@ export default {
     signup: (data) => apiPost("/auth/signup", data),
     login: (data) => apiPost("/auth/login", data),
     getMe: () => apiGet("/auth/me"),
-    updateProfile: (data) => apiPut("/auth/me", data), // <-- added: update profile (PUT /api/auth/me)
+    updateProfile: (data) => apiPut("/auth/me", data),
     getSkills: () => apiGet("/skills"),
     createSkill: (data) => apiPost("/skills", data),
     getSkill: (id) => apiGet(`/skills/${id}`),

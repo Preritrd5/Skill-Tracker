@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const morgan = require("morgan")
+const morgan = require("morgan");
 const connectDB = require("./config/db");
 
 const authRouter = require("./routes/authRoutes");
@@ -10,17 +10,33 @@ const sessionRouter = require("./routes/sessionRoutes");
 const analyticsRouter = require("./routes/analyticsRoutes");
 
 const app = express();
-app.use(cors());
+
+// ⭐ FIXED CORS CONFIG (THIS IS WHAT WAS BREAKING YOUR FRONTEND)
+app.use(
+    cors({
+        origin: [
+            "http://localhost:5173",
+            "https://skill-tracker-inky.vercel.app"
+        ],
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+        credentials: true
+    })
+);
+
 app.use(express.json());
 app.use(morgan("dev"));
 
+// Connect to MongoDB
 connectDB();
 
+// API Routes
 app.use("/api/auth", authRouter);
 app.use("/api/skills", skillRouter);
 app.use("/api/sessions", sessionRouter);
 app.use("/api/analytics", analyticsRouter);
 
+// Root route
 app.get("/", (req, res) => {
     res.send(`
     <!DOCTYPE html>
@@ -65,19 +81,21 @@ app.get("/", (req, res) => {
     </head>
     <body>
         <h1>Skill Tracker API</h1>
-        <p>Welcome! This is the backend for the Skill Tracker application. You can access the API endpoints to manage and track your skills efficiently.</p>
-        <div class="status">Backend is connected and running ✅</div>
+        <p>Backend is connected and running.</p>
+        <div class="status">Running on Render ✅</div>
     </body>
     </html>
-    `);
+  `);
 });
 
+// Error handler
 app.use((err, req, res, next) => {
     console.error(err);
     res.status(err.status || 500).json({ message: err.message || "Server error" });
 });
 
+// Port
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`Server running on port http://localhost:${PORT}`));
-
-
+app.listen(PORT, () =>
+    console.log(`Server running on port http://localhost:${PORT}`)
+);
