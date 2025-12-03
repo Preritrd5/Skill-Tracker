@@ -63,24 +63,22 @@
 
 
 
-
 /**
  * src/utils/api.js
- * Universal API client for Skill Tracker
- * Uses Vite env vars in production, fallback to localhost in dev.
+ * FINAL FIXED VERSION
+ * - Always uses VITE_API_URL in production
+ * - Only uses localhost in dev mode (vite dev server)
  */
 
-// Read environment variable injected by Vite (Vercel production also uses this)
-const rawBase =
-    (typeof import.meta !== "undefined" && import.meta.env?.VITE_API_URL) ||
-    (typeof import.meta !== "undefined" && import.meta.env?.VITE_API_BASE) ||
-    "";
+const isLocalDev = window.location.origin.includes("localhost");
 
-// If env is provided → use it, else fallback to localhost
-let API_BASE = rawBase ? rawBase : "http://localhost:5000/api";
+// In production: MUST use Vercel env var
+let API_BASE = isLocalDev
+    ? "http://localhost:5000/api"
+    : import.meta.env.VITE_API_URL;
 
-// Remove trailing slash if accidentally added
-API_BASE = API_BASE.replace(/\/$/, "");
+// Safety: remove trailing slash
+API_BASE = API_BASE?.replace(/\/$/, "");
 
 const getToken = () => localStorage.getItem("token");
 
@@ -94,14 +92,7 @@ async function request(path, options = {}) {
 
     if (token) headers.Authorization = `Bearer ${token}`;
 
-    console.log(
-        "%cAPI:",
-        "color:#00aaff",
-        (options.method || "GET"),
-        `${API_BASE}${path}`,
-        "Auth:",
-        !!token
-    );
+    console.log("API:", (options.method || "GET"), API_BASE + path);
 
     const res = await fetch(`${API_BASE}${path}`, {
         ...options,
@@ -109,7 +100,6 @@ async function request(path, options = {}) {
     });
 
     const text = await res.text();
-
     try {
         return JSON.parse(text || "{}");
     } catch {
