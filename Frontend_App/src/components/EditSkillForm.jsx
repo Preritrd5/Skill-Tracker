@@ -14,7 +14,7 @@ const EditSkillForm = ({ skill, onSave, onCancel, saving }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
-    
+
     useEffect(() => {
         setName(skill?.name || "");
         setLevel(skill?.level || "Beginner");
@@ -45,7 +45,7 @@ const EditSkillForm = ({ skill, onSave, onCancel, saving }) => {
         try {
             setLoading(true);
             await Promise.resolve(onSave(payload));
-            
+
         } catch (err) {
             console.error(err);
             setError(err?.message || "Failed to save changes.");
@@ -55,7 +55,7 @@ const EditSkillForm = ({ skill, onSave, onCancel, saving }) => {
         }
     };
 
-    
+
     const isSaving = typeof saving === "boolean" ? saving : loading;
 
     return (
@@ -63,13 +63,13 @@ const EditSkillForm = ({ skill, onSave, onCancel, saving }) => {
             {error && <div className="text-sm text-red-600">{error}</div>}
 
             <div>
-                <label className="block text-sm text-blue-600">Skill name *</label>
+                <label className="block text-sm text-white">Skill name *</label>
                 <input
                     name="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g., Python"
-                    className="mt-1 w-full px-3 py-2 border rounded"
+                    className="mt-1 w-full px-3 py-2 border rounded text-blue-600"
                     required
                     disabled={isSaving}
                 />
@@ -77,11 +77,11 @@ const EditSkillForm = ({ skill, onSave, onCancel, saving }) => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                    <label className="block text-sm text-blue-600">Level</label>
+                    <label className="block text-sm text-white">Level</label>
                     <select
                         value={level}
                         onChange={(e) => setLevel(e.target.value)}
-                        className="mt-1 w-full px-3 py-2 border rounded"
+                        className="mt-1 w-full px-3 py-2 border rounded text-blue-600"
                         disabled={isSaving}
                     >
                         {LEVELS.map((l) => (
@@ -93,7 +93,7 @@ const EditSkillForm = ({ skill, onSave, onCancel, saving }) => {
                 </div>
 
                 <div>
-                    <label className="block text-sm text-blue-600">Target hours</label>
+                    <label className="block text-sm text-white">Target hours</label>
                     <input
                         type="number"
                         min="0"
@@ -101,30 +101,30 @@ const EditSkillForm = ({ skill, onSave, onCancel, saving }) => {
                         value={targetHours}
                         onChange={(e) => setTargetHours(e.target.value)}
                         placeholder="e.g., 100"
-                        className="mt-1 w-full px-3 py-2 border rounded"
+                        className="mt-1 w-full px-3 py-2 border rounded text-blue-600"
                         disabled={isSaving}
                     />
                 </div>
             </div>
 
             <div>
-                <label className="block text-sm text-blue-600">Target date (optional)</label>
+                <label className="block text-sm text-white">Target date (optional)</label>
                 <input
                     type="date"
                     value={targetDate || ""}
                     onChange={(e) => setTargetDate(e.target.value)}
-                    className="mt-1 w-full px-3 py-2 border rounded"
+                    className="mt-1 w-full px-3 py-2 border rounded text-blue-600"
                     disabled={isSaving}
                 />
             </div>
 
             <div>
-                <label className="block text-sm text-blue-600">Notes (optional)</label>
+                <label className="block text-sm text-white">Notes (optional)</label>
                 <textarea
                     rows="3"
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
-                    className="mt-1 w-full px-3 py-2 border rounded"
+                    className="mt-1 w-full px-3 py-2 border rounded text-blue-600"
                     disabled={isSaving}
                 />
             </div>
