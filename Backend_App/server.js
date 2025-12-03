@@ -11,12 +11,15 @@ const analyticsRouter = require("./routes/analyticsRoutes");
 
 const app = express();
 
-// ⭐ FIXED CORS CONFIG (THIS IS WHAT WAS BREAKING YOUR FRONTEND)
+/* ---------------------------------------------------------
+      🔥 CORS FIX — ALLOW FRONTEND + RENDER BACKEND
+----------------------------------------------------------- */
 app.use(
     cors({
         origin: [
             "http://localhost:5173",
-            "https://skill-tracker-inky.vercel.app"
+            "https://skill-tracker-inky.vercel.app",
+            "https://skill-tracker-ex637.onrender.com" // backend domain itself
         ],
         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         allowedHeaders: ["Content-Type", "Authorization"],
@@ -24,19 +27,28 @@ app.use(
     })
 );
 
+/* ---------------------------------------------------------
+      MIDDLEWARE
+----------------------------------------------------------- */
 app.use(express.json());
 app.use(morgan("dev"));
 
-// Connect to MongoDB
+/* ---------------------------------------------------------
+      CONNECT TO MONGO
+----------------------------------------------------------- */
 connectDB();
 
-// API Routes
+/* ---------------------------------------------------------
+      ROUTES
+----------------------------------------------------------- */
 app.use("/api/auth", authRouter);
 app.use("/api/skills", skillRouter);
 app.use("/api/sessions", sessionRouter);
 app.use("/api/analytics", analyticsRouter);
 
-// Root route
+/* ---------------------------------------------------------
+      ROOT ROUTE
+----------------------------------------------------------- */
 app.get("/", (req, res) => {
     res.send(`
     <!DOCTYPE html>
@@ -44,7 +56,7 @@ app.get("/", (req, res) => {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Skill Tracker</title>
+        <title>Skill Tracker API</title>
         <style>
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -88,14 +100,17 @@ app.get("/", (req, res) => {
   `);
 });
 
-// Error handler
+/* ---------------------------------------------------------
+      ERROR HANDLER
+----------------------------------------------------------- */
 app.use((err, req, res, next) => {
     console.error(err);
     res.status(err.status || 500).json({ message: err.message || "Server error" });
 });
 
-// Port
+/* ---------------------------------------------------------
+      START SERVER (RENDER-FRIENDLY)
+----------------------------------------------------------- */
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () =>
-    console.log(`Server running on port http://localhost:${PORT}`)
-);
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
