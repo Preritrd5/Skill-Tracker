@@ -62,7 +62,7 @@ const SessionForm = ({ initial = {}, onSave, onCancel, saving = false }) => {
                     step="0.25"
                     value={hours}
                     onChange={(e) => setHours(e.target.value)}
-                    className="mt-1 w-full px-3 py-2 border rounded"
+                    className="mt-1 w-full px-3 py-2 border rounded text-blue-600"
                     placeholder="e.g., 1.5"
                     required
                 />
@@ -74,7 +74,7 @@ const SessionForm = ({ initial = {}, onSave, onCancel, saving = false }) => {
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="mt-1 w-full px-3 py-2 border rounded"
+                    className="mt-1 w-full px-3 py-2 border rounded text-blue-600"
                     required
                 />
             </div>
@@ -85,7 +85,7 @@ const SessionForm = ({ initial = {}, onSave, onCancel, saving = false }) => {
                     rows="3"
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
-                    className="mt-1 w-full px-3 py-2 border rounded"
+                    className="mt-1 w-full px-3 py-2 border rounded text-blue-600"
                     placeholder="What did you work on?"
                 />
             </div>
