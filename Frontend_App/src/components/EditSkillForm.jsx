@@ -119,7 +119,7 @@ const EditSkillForm = ({ skill, onSave, onCancel, saving }) => {
             </div>
 
             <div>
-                <label className="block text-sm text-gray-600">Notes (optional)</label>
+                <label className="block text-sm text-blue-600">Notes (optional)</label>
                 <textarea
                     rows="3"
                     value={notes}
