@@ -63,7 +63,7 @@ const EditSkillForm = ({ skill, onSave, onCancel, saving }) => {
             {error && <div className="text-sm text-red-600">{error}</div>}
 
             <div>
-                <label className="block text-sm text-gray-600">Skill name *</label>
+                <label className="block text-sm text-blue-600">Skill name *</label>
                 <input
                     name="name"
                     value={name}
@@ -77,7 +77,7 @@ const EditSkillForm = ({ skill, onSave, onCancel, saving }) => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                    <label className="block text-sm text-gray-600">Level</label>
+                    <label className="block text-sm text-blue-600">Level</label>
                     <select
                         value={level}
                         onChange={(e) => setLevel(e.target.value)}
@@ -93,7 +93,7 @@ const EditSkillForm = ({ skill, onSave, onCancel, saving }) => {
                 </div>
 
                 <div>
-                    <label className="block text-sm text-gray-600">Target hours</label>
+                    <label className="block text-sm text-blue-600">Target hours</label>
                     <input
                         type="number"
                         min="0"
@@ -108,7 +108,7 @@ const EditSkillForm = ({ skill, onSave, onCancel, saving }) => {
             </div>
 
             <div>
-                <label className="block text-sm text-gray-600">Target date (optional)</label>
+                <label className="block text-sm text-blue-600">Target date (optional)</label>
                 <input
                     type="date"
                     value={targetDate || ""}
