@@ -17,7 +17,10 @@
     "morgan": "^1.10.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.11"
+    "gh-pages": "^6.3.0",
+    "install": "^0.13.0",
+    "nodemon": "^3.1.11",
+    "npm": "^11.6.4"
   },
   "keywords": [],
   "author": "",
