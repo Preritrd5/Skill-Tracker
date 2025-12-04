@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const HomePage = () => {
     return (
@@ -30,13 +29,11 @@ const HomePage = () => {
                             </p>
 
                             <div className="flex items-center flex-wrap gap-4 mt-4">
-                                <Link to="/login">
-                                    <button
-                                        className="inline-flex items-center justify-center gap-2 font-medium bg-[linear-gradient(135deg,hsl(195,100%,45%),hsl(195,100%,60%))] text-white hover:opacity-90 h-14 px-10 rounded-lg shadow-soft group"
-                                    >
+                                <a href="/login">
+                                    <button className="inline-flex items-center justify-center gap-2 font-medium bg-[linear-gradient(135deg,hsl(195,100%,45%),hsl(195,100%,60%))] text-white hover:opacity-90 h-14 px-10 rounded-lg shadow-soft group">
                                         Get Started
                                         <svg
-                                            xmlns="http://www.w3.org/2000/svg"
+                                            xmlns="http:"
                                             width="24"
                                             height="24"
                                             viewBox="0 0 24 24"
@@ -51,10 +48,9 @@ const HomePage = () => {
                                             <path d="m12 5 7 7-7 7" />
                                         </svg>
                                     </button>
-                                </Link>
+                                </a>
                             </div>
-
-
+                            
                         </div>
 
                         <div className="relative flex justify-end">
