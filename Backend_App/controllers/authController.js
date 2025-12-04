@@ -100,7 +100,6 @@ exports.getMe = async (req, res) => {
 };
 
 
-
 exports.updateMe = async (req, res) => {
     try {
         const userId = req.user && req.user._id;
