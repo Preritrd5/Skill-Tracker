@@ -71,3 +71,14 @@ npm start
 cd ../Frontend_App
 npm install
 npm run dev
+
+
+src/utils/api.js
+FINAL FIXED VERSION
+- Always uses VITE_API_URL in production
+- Only uses localhost in dev mode (vite dev server)
+ 
+// In production: MUST use Vercel env var
+let API_BASE = isLocalDev
+    ? "http://localhost:4000/api"
+    : import.meta.env.VITE_API_URL;
