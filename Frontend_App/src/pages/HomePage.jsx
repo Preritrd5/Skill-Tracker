@@ -29,7 +29,7 @@ const HomePage = () => {
                             </p>
 
                             <div className="flex items-center flex-wrap gap-4 mt-4">
-                                <a href="/skills">
+                                <a href="/login">
                                     <button className="inline-flex items-center justify-center gap-2 font-medium bg-[linear-gradient(135deg,hsl(195,100%,45%),hsl(195,100%,60%))] text-white hover:opacity-90 h-14 px-10 rounded-lg shadow-soft group">
                                         Get Started
                                         <svg
