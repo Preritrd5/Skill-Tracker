@@ -74,7 +74,7 @@ const isLocalDev = window.location.origin.includes("localhost");
 
 // In production: MUST use Vercel env var
 let API_BASE = isLocalDev
-    ? "http://localhost:5000/api"
+    ? "http://localhost:4000/api"
     : import.meta.env.VITE_API_URL;
 
 // Safety: remove trailing slash

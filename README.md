@@ -60,7 +60,7 @@ Create a .env file:
 
 MONGO_URI=your_mongo_uri
 JWT_SECRET=your_secret
-PORT=5000
+PORT=4000
 
 
 Run backend:
