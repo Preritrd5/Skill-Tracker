@@ -29,27 +29,6 @@ const HomePage = () => {
                                 and intuitive tracking.
                             </p>
 
-                            {/* <div className="flex items-center flex-wrap gap-4 mt-4">
-                                <a href="/login">
-                                    <button className="inline-flex items-center justify-center gap-2 font-medium bg-[linear-gradient(135deg,hsl(195,100%,45%),hsl(195,100%,60%))] text-white hover:opacity-90 h-14 px-10 rounded-lg shadow-soft group">
-                                        Get Started
-                                        <svg
-                                            xmlns="http:"
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1"
-                                        >
-                                            <path d="M5 12h14" />
-                                            <path d="m12 5 7 7-7 7" />
-                                        </svg>
-                                    </button>
-                                </a> */}
                             <div className="flex items-center flex-wrap gap-4 mt-4">
                                 <Link to="/login">
                                     <button
@@ -77,20 +56,19 @@ const HomePage = () => {
 
 
                         </div>
-                    </div>
 
-                    <div className="relative flex justify-end">
-                        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur-3xl"></div>
+                        <div className="relative flex justify-end">
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur-3xl"></div>
 
-                        <img
-                            src="hero-banner.jpg"
-                            alt="Learning workspace"
-                            className="relative rounded-2xl shadow-strong w-full h-[65vh] object-cover"
-                        />
+                            <img
+                                src="hero-banner.jpg"
+                                alt="Learning workspace"
+                                className="relative rounded-2xl shadow-strong w-full h-[65vh] object-cover"
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section >
+            </section>
 
             <section className="py-20 bg-slate-50">
                 <div className="max-w-7xl mx-auto px-6">
