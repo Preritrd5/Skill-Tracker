@@ -152,9 +152,9 @@ const HomePage = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                            ["Simple, focused and exactly what I needed to keep a consistent practice habit.", "Priya, Data Analyst", "bg-teal-100", "text-teal-900"],
-                            ["The progress charts made my weekly wins visible — huge motivation.", "Rahul, Student", "bg-blue-100", "text-blue-900"],
-                            ["Logging sessions is so quick now — no excuses.", "Ananya, Designer", "bg-purple-100", "text-purple-900"],
+                            ["Simple, focused and exactly what I needed to keep a consistent practice habit.", "Punith Kumar M", "bg-teal-100", "text-teal-900"],
+                            ["The progress charts made my weekly wins visible — huge motivation.", "Punith D", "bg-blue-100", "text-blue-900"],
+                            ["Logging sessions is so quick now — no excuses.", "Purushotham K", "bg-purple-100", "text-purple-900"],
                         ].map(([quote, name, bgColor, textColor], i) => (
                             <blockquote
                                 key={i}
